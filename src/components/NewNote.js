@@ -1,27 +1,41 @@
-import { useRef } from "react";
+import { useRef, useState, useContext } from "react";
 
 import styles from "./NewNote.module.css";
+
+import NoteContext from "../store/note-context";
 
 import Section from "../layout/Section";
 import Button from "../layout/Button";
 
 const NewNote = function (props) {
+  const { addNote } = useContext(NoteContext);
+  const [error, setError] = useState();
   const titleRef = useRef();
   const contentRef = useRef();
 
+  const clearInputs = () => {
+    titleRef.current.value = "";
+    contentRef.current.value = "";
+  };
+
   const addNoteHandler = (event) => {
     event.preventDefault();
+    setError(false);
+
+    if (titleRef.current.value === "" || contentRef.current.value === "") {
+      setError(true);
+      clearInputs();
+      return;
+    }
 
     const note = {
+      key: Math.random().toString(),
       title: titleRef.current.value,
       content: contentRef.current.value,
     };
 
-    console.log("Title: ", note.title);
-    console.log("Content: ", note.content);
-
-    titleRef.current.value = "";
-    contentRef.current.value = "";
+    addNote(note);
+    clearInputs();
   };
 
   return (
@@ -49,6 +63,7 @@ const NewNote = function (props) {
         <Button className={styles["submit"]} onClick={addNoteHandler}>
           Submit
         </Button>
+        {error && <p>Make sure you fill both fields with content.</p>}
       </form>
     </Section>
   );
