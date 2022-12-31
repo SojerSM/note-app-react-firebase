@@ -4,33 +4,3 @@
   transform: translate(0, -50%);
   width: 25rem;
 }
-
-.form-section form {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-label[for="title"],
-label[for="content"] {
-  font-size: 1.5rem;
-}
-
-.input {
-  font-family: inherit;
-  font-size: 1.2rem;
-  width: 100%;
-  border: none;
-  border-radius: 20px;
-  padding: 0.5rem;
-  margin-top: 0.5rem;
-}
-
-.input:focus {
-  outline: none;
-}
-
-.submit {
-  margin: auto;
-  font-size: 1.5rem;
-}
