@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import useHttp from "../hooks/use-http";
 
-import { DATABASE_URL, ENDPOINT_NOTES } from "../utils/config";
+import { API_URL, ENDPOINT_NOTES } from "../utils/config";
 
 import NoteContext from "./note-context";
 
 const NoteProvider = function (props) {
   const [notes, setNotes] = useState([]);
-  const { isLoading, error, sendRequest: fetchNotes } = useHttp();
+  const { sendRequest: fetchNotes } = useHttp();
 
   useEffect(() => {
     const transformNotes = (notesObj) => {
@@ -23,7 +23,7 @@ const NoteProvider = function (props) {
       setNotes(loadedNotes);
     };
 
-    fetchNotes({ url: `${DATABASE_URL}${ENDPOINT_NOTES}` }, transformNotes);
+    fetchNotes({ url: `${API_URL}${ENDPOINT_NOTES}` }, transformNotes);
   }, [fetchNotes]);
 
   const addNote = (note) => {
