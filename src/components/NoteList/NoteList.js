@@ -12,7 +12,9 @@ const NoteList = function (props) {
   return (
     <div className={styles["list"]}>
       {notes.map((note) => {
-        return <NoteItem />;
+        return (
+          <NoteItem key={note.id} title={note.title} content={note.content} />
+        );
       })}
     </div>
   );
