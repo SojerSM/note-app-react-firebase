@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { DATABASE_URL } from "../utils/config";
+import { DATABASE_URL, ENDPOINT_NOTES } from "../utils/config";
 import useHttp from "../hooks/use-http";
 
 import NoteContext from "../store/note-context";
@@ -26,7 +26,7 @@ const NewNote = function (props) {
   const addFormHandler = (note) => {
     sendNoteRequest(
       {
-        url: `${DATABASE_URL}notes.json`,
+        url: `${DATABASE_URL}${ENDPOINT_NOTES}`,
         method: "POST",
         headers: {
           "Content-Type": "application/json",

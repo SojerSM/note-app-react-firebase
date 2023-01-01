@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import useHttp from "../hooks/use-http";
 
-import { DATABASE_URL } from "../utils/config";
+import { DATABASE_URL, ENDPOINT_NOTES } from "../utils/config";
 
 import NoteContext from "./note-context";
 
@@ -23,7 +23,7 @@ const NoteProvider = function (props) {
       setNotes(loadedNotes);
     };
 
-    fetchNotes({ url: `${DATABASE_URL}notes.json` }, transformNotes);
+    fetchNotes({ url: `${DATABASE_URL}${ENDPOINT_NOTES}` }, transformNotes);
   }, [fetchNotes]);
 
   const addNote = (note) => {
