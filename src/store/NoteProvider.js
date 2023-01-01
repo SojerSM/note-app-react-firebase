@@ -13,7 +13,7 @@ const NoteProvider = function (props) {
     setNotes((prevNotes) => [
       ...prevNotes,
       {
-        key: note.key,
+        id: note.id,
         title: note.title,
         content: note.content,
       },

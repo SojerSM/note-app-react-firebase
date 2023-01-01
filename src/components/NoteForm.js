@@ -25,7 +25,6 @@ const NoteForm = function (props) {
     }
 
     const note = {
-      key: Math.random().toString(),
       title: titleRef.current.value,
       content: contentRef.current.value,
     };
