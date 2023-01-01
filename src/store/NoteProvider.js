@@ -1,13 +1,30 @@
 import React, { useState, useEffect } from "react";
+import useHttp from "../hooks/use-http";
+
+import { DATABASE_URL } from "../utils/config";
 
 import NoteContext from "./note-context";
 
 const NoteProvider = function (props) {
   const [notes, setNotes] = useState([]);
+  const { isLoading, error, sendRequest: fetchNotes } = useHttp();
 
   useEffect(() => {
-    console.log(notes);
-  }, [notes]);
+    const transformNotes = (notesObj) => {
+      const loadedNotes = [];
+
+      for (const noteKey in notesObj) {
+        loadedNotes.push({
+          id: noteKey,
+          title: notesObj[noteKey].title,
+          content: notesObj[noteKey].content,
+        });
+      }
+      setNotes(loadedNotes);
+    };
+
+    fetchNotes({ url: `${DATABASE_URL}notes.json` }, transformNotes);
+  }, [fetchNotes]);
 
   const addNote = (note) => {
     setNotes((prevNotes) => [
@@ -24,6 +41,8 @@ const NoteProvider = function (props) {
     notes,
     addNote,
   };
+
+  console.log(notes);
 
   return (
     <NoteContext.Provider value={noteContext}>
