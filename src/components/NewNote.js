@@ -13,12 +13,12 @@ const NewNote = function (props) {
   const { addNote } = useContext(NoteContext);
   const { isLoading, error, sendRequest: sendNoteRequest } = useHttp();
 
-  const createNote = (noteData) => {
+  const createNote = (note, noteData) => {
     const generatedId = noteData.name;
     const createdNote = {
       id: generatedId,
-      title: noteData.title,
-      content: noteData.content,
+      title: note.title,
+      content: note.content,
     };
     addNote(createdNote);
   };
@@ -33,7 +33,7 @@ const NewNote = function (props) {
         },
         body: { title: note.title, content: note.content },
       },
-      createNote(note)
+      createNote.bind(null, note)
     );
   };
 
