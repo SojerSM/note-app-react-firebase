@@ -27,3 +27,7 @@ label[for="content"] {
   margin: auto;
   font-size: 1.5rem;
 }
+
+.message {
+  margin: auto;
+}

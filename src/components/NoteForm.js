@@ -5,7 +5,7 @@ import styles from "./NoteForm.module.css";
 import Button from "../layout/Button";
 
 const NoteForm = function (props) {
-  const [error, setError] = useState();
+  const [error, setError] = useState(false);
   const titleRef = useRef();
   const contentRef = useRef();
 
@@ -33,6 +33,16 @@ const NoteForm = function (props) {
     clearInputs();
   };
 
+  const displayMessage = () => {
+    if (error) {
+      return "You have to fill both fields.";
+    }
+
+    if (props.httpError) {
+      return `${props.httpError}`;
+    }
+  };
+
   return (
     <form className={styles["form"]}>
       <div>
@@ -55,9 +65,9 @@ const NoteForm = function (props) {
         ></textarea>
       </div>
       <Button className={styles["submit"]} onClick={formSubmitHandler}>
-        Submit
+        {props.isLoading ? "Sending..." : "Add note"}
       </Button>
-      {error && <p>Make sure you fill both fields with content.</p>}
+      <p className={styles["message"]}>{displayMessage()}</p>
     </form>
   );
 };

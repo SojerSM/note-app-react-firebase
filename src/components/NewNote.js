@@ -39,7 +39,11 @@ const NewNote = function (props) {
 
   return (
     <Section className={styles["form-section"]}>
-      <NoteForm onAddNote={addFormHandler} />
+      <NoteForm
+        onAddNote={addFormHandler}
+        isLoading={isLoading}
+        httpError={error}
+      />
     </Section>
   );
 };
