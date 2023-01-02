@@ -1,9 +1,9 @@
 .list {
-  position: absolute;
-  left: 52%;
-  top: 2rem;
-
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   gap: 1rem;
+  width: 32rem;
+  height: 90%;
+  overflow: auto;
 }
