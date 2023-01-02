@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { API_URL } from '../../utils/config';
+import { capitalizeFirstLetter } from '../../utils/helpers';
 import useHttp from '../../hooks/use-http';
 
 import styles from './NoteItem.module.css';
@@ -32,7 +33,7 @@ const NoteItem = function (props) {
   return (
     <Section className={styles['note']}>
       <div>
-        <h2>{props.title}</h2>
+        <h2>{capitalizeFirstLetter(props.title)}</h2>
         <button className={styles['remove-btn']} onClick={removeNoteHandler}>
           <svg className={styles['svg-icon']} viewBox="0 0 20 20">
             {removeIcon}
@@ -40,7 +41,9 @@ const NoteItem = function (props) {
         </button>
       </div>
       <div>
-        <p className={styles['content']}>{props.content}</p>
+        <p className={styles['content']}>
+          {capitalizeFirstLetter(props.content)}
+        </p>
       </div>
     </Section>
   );

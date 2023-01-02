@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { API_URL, ENDPOINT_NOTES } from '../utils/config';
+import { API_URL } from '../utils/config';
 import useHttp from '../hooks/use-http';
 
 import NoteContext from '../store/note-context';
