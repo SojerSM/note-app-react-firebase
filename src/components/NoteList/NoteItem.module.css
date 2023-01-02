@@ -17,7 +17,8 @@
   border-radius: 0 0 20px 20px;
 }
 
-.remove-btn {
+.remove-btn,
+.spread-btn {
   background: none;
   outline: none;
   border: none;
@@ -26,8 +27,12 @@
 
 .content {
   text-align: justify;
+  font-size: 1.2rem;
   overflow: hidden;
   overflow-wrap: break-word;
+  max-height: 0;
+
+  transition: max-height 0.3s ease;
 }
 
 .svg-icon {
