@@ -11,16 +11,20 @@ const NoteList = function (props) {
 
   return (
     <div className={styles['list']}>
-      {notes.map((note) => {
-        return (
-          <NoteItem
-            key={note.id}
-            id={note.id}
-            title={note.title}
-            content={note.content}
-          />
-        );
-      })}
+      {notes.length > 0 ? (
+        notes.map((note) => {
+          return (
+            <NoteItem
+              key={note.id}
+              id={note.id}
+              title={note.title}
+              content={note.content}
+            />
+          );
+        })
+      ) : (
+        <p className={styles['alt-message']}>No items found.</p>
+      )}
     </div>
   );
 };

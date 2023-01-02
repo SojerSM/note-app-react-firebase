@@ -26,6 +26,8 @@
 
 .content {
   text-align: justify;
+  overflow: hidden;
+  overflow-wrap: break-word;
 }
 
 .svg-icon {
