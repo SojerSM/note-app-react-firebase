@@ -1,13 +1,13 @@
-import { useContext } from "react";
-import { API_URL, ENDPOINT_NOTES } from "../utils/config";
-import useHttp from "../hooks/use-http";
+import { useContext } from 'react';
+import { API_URL, ENDPOINT_NOTES } from '../utils/config';
+import useHttp from '../hooks/use-http';
 
-import NoteContext from "../store/note-context";
+import NoteContext from '../store/note-context';
 
-import styles from "./NewNote.module.css";
+import styles from './NewNote.module.css';
 
-import Section from "../layout/Section";
-import NoteForm from "./NoteForm";
+import Section from '../layout/Section';
+import NoteForm from './NoteForm';
 
 const NewNote = function (props) {
   const { addNote } = useContext(NoteContext);
@@ -26,10 +26,10 @@ const NewNote = function (props) {
   const addFormHandler = (note) => {
     sendNoteRequest(
       {
-        url: `${API_URL}${ENDPOINT_NOTES}`,
-        method: "POST",
+        url: `${API_URL}notes.json`,
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: { title: note.title, content: note.content },
       },
@@ -38,7 +38,7 @@ const NewNote = function (props) {
   };
 
   return (
-    <Section className={styles["form-section"]}>
+    <Section className={styles['form-section']}>
       <NoteForm
         onAddNote={addFormHandler}
         isLoading={isLoading}

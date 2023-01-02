@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
-import useHttp from "../hooks/use-http";
+import React, { useState, useEffect } from 'react';
+import useHttp from '../hooks/use-http';
 
-import { API_URL, ENDPOINT_NOTES } from "../utils/config";
+import { API_URL } from '../utils/config';
 
-import NoteContext from "./note-context";
+import NoteContext from './note-context';
 
 const NoteProvider = function (props) {
   const [notes, setNotes] = useState([]);
@@ -23,7 +23,7 @@ const NoteProvider = function (props) {
       setNotes(loadedNotes);
     };
 
-    fetchNotes({ url: `${API_URL}${ENDPOINT_NOTES}` }, transformNotes);
+    fetchNotes({ url: `${API_URL}notes.json` }, transformNotes);
   }, [fetchNotes]);
 
   const addNote = (note) => {
@@ -37,9 +37,18 @@ const NoteProvider = function (props) {
     ]);
   };
 
+  const removeNote = (id) => {
+    setNotes(
+      notes.filter((note) => {
+        return note.id !== id;
+      })
+    );
+  };
+
   const noteContext = {
     notes,
     addNote,
+    removeNote,
   };
 
   console.log(notes);

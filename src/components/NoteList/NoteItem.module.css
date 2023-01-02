@@ -2,3 +2,44 @@
   width: 30rem;
   padding: 0 2rem;
 }
+
+.note > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.note > div:last-child {
+  background-color: white;
+  margin: 0 -2rem;
+  padding: 0 2rem;
+  border-radius: 0 0 20px 20px;
+}
+
+.remove-btn {
+  background: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.content {
+  text-align: justify;
+}
+
+.svg-icon {
+  width: 2rem;
+  height: 2rem;
+}
+
+.svg-icon path,
+.svg-icon polygon,
+.svg-icon rect {
+  fill: #6b6b6b;
+}
+
+.svg-icon circle {
+  stroke: #6b6b6b;
+  stroke-width: 1;
+}
